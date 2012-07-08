@@ -1,0 +1,17 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class='wrapper')
+      div(class='content')!= body
+      div(class='push')
+
+    div(class='footer', align='center')
+      hr
+      a(href='/recipes/') Home
+      span &nbsp|&nbsp
+      a(href='/about') About
+      span &nbsp|&nbsp
+      a(href='/legal') Legal

@@ -1,0 +1,12 @@
+img(class='background', src='../images/flower_watermark.jpg')
+
+h1(alt=path) Hungry Adelaide Recipes
+
+form
+  p
+    input(name='p', value=p)
+    input(type='submit') Search
+
+each recipe in recipes
+  a(href=recipe.Name) #{recipe.Name}
+  br

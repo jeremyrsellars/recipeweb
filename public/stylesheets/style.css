@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ul {display: inline;}
+
+
+body
+{
+  font-family:"Lucida Grande", verdana,helvetica,sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+img.background
+{
+  position:absolute;
+  z-index:-1;
+  right:0px;
+  width: 400px;
+  background-color: #ffffff;
+  border: 0px solid black;
+  /* for IE */
+  filter:alpha(opacity=50);
+  /* CSS3 standard */
+  opacity:0.3;
+}
+
+h1
+{
+  font-family:Garamond, "Century Schoolbook", "Bookman", "bookman old style", Georgia, Arial;
+  font-size:42;
+}
+
+h2
+{
+  display:block;
+  font-family:Garamond, "Century Schoolbook", "Bookman", "bookman old style", Georgia, Arial;
+  font-weight:bold;
+  font-size:42;
+  color:#3344ff;
+}
+
+h3
+{
+  display:block;
+  font-weight:bold;
+  color:#3344ff;
+}
+
+span.Quantity, span.Amount, span.Unit
+{
+  font-weight:bold;
+}
+
+.wrapper
+{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.wrapper .content div
+{
+  margin: 10px
+}
+.wrapper .content h1
+{
+  margin: 10px
+}
+//.wrapper .content h2
+//{
+//  margin: 10px
+//}
+.wrapper .content h3
+{
+  margin: 10px
+}
+.wrapper .content p
+{
+  margin: 10px
+}
+
+.footer, .push
+{
+	height: 30px; /* .push must be the same height as .footer */
+  margin:0px
+}
