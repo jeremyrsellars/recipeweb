@@ -42,6 +42,7 @@ class module.exports.RecipeIndexManager
 
   loadFile: (file, cb) =>
     new RecipeParser(@recipeFolder + file).parse (err, recipe) =>
+      recipe.FileName = file
       @addRecipe recipe
       @fileLoaded file
 
