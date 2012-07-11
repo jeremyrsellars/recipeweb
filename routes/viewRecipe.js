@@ -1,7 +1,7 @@
 var RecipeParser = require('../src/RecipeParser').RecipeParser;
 exports.viewRecipe = function(req, res){
   console.log('===========' + req.params.recipe + '==========');
-  new RecipeParser(app.settings.recipeRoot + req.params.recipe).parse (function(err, recipe){
+  new RecipeParser(req.app.settings.recipeRoot + req.params.recipe).parse (function(err, recipe){
       if (err)
         console.log(err);
       writeRecipe(res, recipe);
