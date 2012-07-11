@@ -1,6 +1,6 @@
 xml = require 'node-xml'
 
-class exports.RecipeParser
+class module.exports.RecipeParser
   constructor: (@filename) ->
 
   parse: (fn) =>
