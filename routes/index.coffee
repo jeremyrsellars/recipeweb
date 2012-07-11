@@ -11,7 +11,7 @@ exports.legal = (req, res) ->
   res.render 'legal', title:'Legal - Hungry Adelaide Recipes'
 
 exports.index = (req, res) ->
-  fs.readdir app.settings.recipeRoot, (err, aFiles) ->
+  fs.readdir req.app.settings.recipeRoot, (err, aFiles) ->
     url = require('url').parse req.url
     filterWords = null
     query = ''
@@ -43,5 +43,5 @@ exports.index = (req, res) ->
        title:'Hungry Adelaide Recipes'
        recipes: recipes
        p : query
-       path : app.settings.recipeRoot
+       path : req.app.settings.recipeRoot
     res.render 'index', context
