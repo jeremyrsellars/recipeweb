@@ -2,10 +2,11 @@
 /**
  * Module dependencies.
  */
-
+require('coffee-script');
 var express = require('express')
   , routes = require('./routes')
-  , xml = require("node-xml");
+  , RecipeIndexManager = require('./src/RecipeIndexManager').RecipeIndexManager;
+
 
 //var 
 app = module.exports = express.createServer();
@@ -31,7 +32,12 @@ app.configure('production', function(){
   app.set('recipeRoot', '/documents and settings/compaq_administrator/my documents/my recipes/');
 });
 
-
+app.configure(function(){
+  new RecipeIndexManager(app.settings.recipeRoot).load(function(err, index){
+    console.log(index.count() + ' recipes');
+    app.set('index', index);
+  });
+});
 // Routes
 
 app.get('/', function(req, res) {res.redirect('/recipes/');});
