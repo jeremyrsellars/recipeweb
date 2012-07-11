@@ -1,4 +1,3 @@
-require('coffee-script');
 var RecipeParser = require('../src/RecipeParser').RecipeParser;
 exports.viewRecipe = function(req, res){
   console.log('===========' + req.params.recipe + '==========');
