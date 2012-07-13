@@ -1,4 +1,4 @@
-fs = require('fs')
+fs = require 'fs'
 Idx = require 'simpleindex'
 RecipeParser = require('./RecipeParser').RecipeParser
 
@@ -14,9 +14,11 @@ converter =
     names = [p.Name for p in r.Parts if r.Parts]
     names.push r.Name
     names.join '; '
+  source: (r) -> (r.Source ? {}).Name ? []
+  tag: (r) -> [] #add tags
   method: (r) -> [part.PreparationMethod for part in r.Parts ? []].join '\r\n'
   instructions: (r) -> [line for line in part.InstructionLines ? [] for part in r.Parts ? []].join '\r\n'
-  ingredients: (r) -> [ingredient.Ingredient for ingredient in part.Ingredients ? [] for part in r.Parts ? []].join '\r\n'
+  ingredient: (r) -> [ingredient.Ingredient for ingredient in part.Ingredients ? [] for part in r.Parts ? []].join '\r\n'
 
 
 class module.exports.RecipeIndexManager
