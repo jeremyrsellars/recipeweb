@@ -2,6 +2,8 @@ express = require 'express'
 routes = require './routes'
 RecipeIndexManager = require('./src/RecipeIndexManager').RecipeIndexManager
 
+Idx = require 'simpleindex'
+
 app = module.exports = express.createServer()
 
 app.configure ->
@@ -24,6 +26,7 @@ app.configure ->
   new RecipeIndexManager(app.settings.recipeRoot).load (err, index)->
     console.log index.count() + ' recipes'
     app.set 'index', index
+    app.set 'indexSearcher', new Idx.IndexSearcher index
 
 # Routes
 app.get '/', (req, res) -> res.redirect '/recipes/'
