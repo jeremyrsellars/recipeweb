@@ -9,4 +9,6 @@ form
 
 each recipe in recipes
   a(href=recipe.FileName) #{recipe.Name}
+  if recipe.Source
+    span #{recipe.Source.Name}
   br

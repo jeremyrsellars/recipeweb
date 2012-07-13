@@ -3,6 +3,7 @@ meta(name='viewport', content='width=device-width, height=600, user-scalable=yes
 img(class='background', src='../images/flower_watermark.jpg')
 
 h2(align='center')= recipe.Name
+p(align='center')= recipe.Source.Name
 ul(class='inlineBullets', align='center')
  if recipe.CreatedOn && recipe.CreatedOn.substring(0, 4) > 1900
    li Created: #{recipe.CreatedOn.substring(0, 10)} 

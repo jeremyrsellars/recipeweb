@@ -13,22 +13,24 @@ class module.exports.RecipeParser
         parser.pause()
         fn null, recipe
       cb.onStartElementNS (elem, attrs, prefix, uri, namespaces) =>
-        if (elem != 'String')
+        if elem != 'String'
             lastElem = elem
-        if (elem == "Recipe")
-            @processRecipe(recipe, attrs)
-        else if (elem == "RecipePart")
-            @processRecipePart(recipe, attrs)
-        else if (elem == "Rating")
-            @processRating(recipe, attrs)
-        else if (elem == "IngredientDetail")
-            @processIngredientDetail(recipe, attrs)
+        if elem == "Recipe"
+            @processRecipe recipe, attrs
+        else if elem == "RecipePart"
+            @processRecipePart recipe, attrs
+        else if elem == "Rating"
+            @processRating recipe, attrs
+        else if elem == "Source"
+            @processSource recipe, attrs
+        else if elem == "IngredientDetail"
+            @processIngredientDetail recipe, attrs
 
       cb.onCdata (cdata) =>
         if lastElem == 'Instructions'
           part = recipe.Parts[recipe.Parts.length - 1]
           part.Instructions = cdata
-          part.InstructionLines = cdata.split(/\r\n|\r|\n/)
+          part.InstructionLines = cdata.split /\r\n|\r|\n/
 
     #warning: security vulnerability:  parses any file in system!!!!!!
     parser.parseFile @filename
@@ -55,6 +57,11 @@ class module.exports.RecipeParser
     @setAttributes rating, attrs
     recipe.Ratings = [] unless recipe.Ratings
     recipe.Ratings.push rating
+
+  processSource: (recipe, attrs)=>
+    source = {}
+    @setAttributes source, attrs
+    recipe.Source = source
 
   setAttributes: (obj, attrs)=>
     for attr in attrs
