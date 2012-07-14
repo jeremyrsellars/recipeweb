@@ -46,8 +46,6 @@ exports.index = (req, res) ->
       catch e
         console.log 'error:'
         console.log e
-      console.log 'hits'
-      console.log hits
       index.getItemsSync hits
     else
       x.document for x in index.documents
