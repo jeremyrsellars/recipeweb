@@ -28,6 +28,7 @@ class module.exports.RecipeIndexManager
     @loaded = 0
     @db = new Idx.DocumentBuilder converter
     @docInv = new Idx.DocumentInverter()
+    @docInv.filter = new Idx.StopWordFilter Idx.StopWordFilter.MySqlStopWords, @docInv.filter
 
   load: (@cb)=>
     console.log 'loading files from ' + @recipeFolder
