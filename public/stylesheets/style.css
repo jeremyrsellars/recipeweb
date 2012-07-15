@@ -97,3 +97,17 @@ span.Quantity, span.Amount, span.Unit
 	height: 30px; /* .push must be the same height as .footer */
   margin:0px
 }
+
+a.tag
+{
+  color: #3E6D8E;
+  background-color: #E0EAF1;
+  border-bottom: 1px solid #3E6D8E;
+  border-right: 1px solid #7F9FB6;
+  padding: 3px 4px 3px 4px;
+  margin: 4px 2px 4px 0;
+  text-decoration: none;
+  font-size: 90%;
+  line-height: 2.4;
+  white-space: nowrap;
+}

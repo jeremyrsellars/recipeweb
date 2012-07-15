@@ -8,7 +8,17 @@ form
     input(type='submit') Search
 
 each recipe in recipes
-  a(href=recipe.FileName) #{recipe.Name}
-  if recipe.Source
-    span #{recipe.Source.Name}
-  br
+  div
+    a(href=recipe.FileName) #{recipe.Name}
+    if recipe.Source
+      &nbsp;-
+      span #{recipe.Source.Name}
+    each part in recipe.Parts
+      if part.PreparationMethod
+        &nbsp;-
+        span #{part.PreparationMethod.Name}
+    if recipe.Tags
+      br
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      each tag in recipe.Tags
+        a(class='tag',href='/recipes/?p=tag:#{tag.Name}')=tag.Name
