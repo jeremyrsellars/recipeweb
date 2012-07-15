@@ -69,6 +69,7 @@ exports.index = (req, res) ->
 
   recipes = null
   if url.query && url.query != ''
+    url.query = url.query.toLowerCase()
     console.log 'query: ' + url.query
     querystring = require('querystring').parse url.query
     if querystring.p? && querystring.p
