@@ -15,7 +15,7 @@ converter =
     names.push r.Name
     names.join '; '
   source: (r) -> (r.Source ? {}).Name ? []
-  tag: (r) -> [] #add tags
+  tag: (r) -> [tag.Name for tag in r.Tags].join ';'
   method: (r) -> [part.PreparationMethod for part in r.Parts ? []].join '\r\n'
   instructions: (r) -> [line for line in part.InstructionLines ? [] for part in r.Parts ? []].join '\r\n'
   ingredient: (r) -> [ingredient.Ingredient for ingredient in part.Ingredients ? [] for part in r.Parts ? []].join '\r\n'

@@ -23,6 +23,8 @@ class module.exports.RecipeParser
             @processRating recipe, attrs
         else if elem == "Source"
             @processSource recipe, attrs
+        else if elem == "Tag"
+            @processTag recipe, attrs
         else if elem == "IngredientDetail"
             @processIngredientDetail recipe, attrs
 
@@ -62,6 +64,12 @@ class module.exports.RecipeParser
     source = {}
     @setAttributes source, attrs
     recipe.Source = source
+
+  processTag: (recipe, attrs)=>
+    tag = {}
+    @setAttributes tag, attrs
+    recipe.Tags = [] unless recipe.Tags
+    recipe.Tags.push tag
 
   setAttributes: (obj, attrs)=>
     for attr in attrs
