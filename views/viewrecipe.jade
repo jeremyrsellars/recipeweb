@@ -2,64 +2,58 @@ meta(name='viewport', content='width=device-width, height=600, user-scalable=yes
 
 img(class='background', src='../images/flower_watermark.jpg')
 
-h2(align='center')= recipe.Name
-p(align='center')= recipe.Source.Name
-ul(class='inlineBullets', align='center')
- if recipe.CreatedOn && recipe.CreatedOn.substring(0, 4) > 1900
-   li Created: #{recipe.CreatedOn.substring(0, 10)} 
- if recipe.Yield > 0
-   li Yield: #{recipe.Yield} #{recipe.YieldUnit} 
- if recipe.Servings > 0
-   li Servings: #{recipe.Servings}
- li Rating: #{recipe.RatingValue == 0 ? "Not yet rated" : recipe.RatingValue}
-   if (recipe.Ratings)
-     ul
-       each rating in recipe.Ratings
-         if (rating.Value > 0)
-            li #{rating.Value} by #{rating.UserName}
+div(itemscope='',itemtype="http://schema.org/Recipe")
+  h2(align='center',itemprop="name")= recipe.Name
+  p(align='center',itemprop="author")= recipe.Source.Name
+  ul(class='inlineBullets', align='center')
+   if recipe.CreatedOn && recipe.CreatedOn.substring(0, 4) > 1900
+     li Created: #{recipe.CreatedOn.substring(0, 10)} 
+   if recipe.Yield > 0
+     li(itemprop="recipeYield") Yield: #{recipe.Yield} #{recipe.YieldUnit} 
+   if recipe.Servings > 0
+     li(itemprop="recipeYield") Servings: #{recipe.Servings}
+   li Rating: #{recipe.RatingValue == 0 ? "Not yet rated" : recipe.RatingValue}
+     if (recipe.Ratings)
+       ul
+         each rating in recipe.Ratings
+           if (rating.Value > 0)
+              li #{rating.Value} by #{rating.UserName}
 
-each part in recipe.Parts
-  div
-    // Prep Time, Method, Cook Time, Temperature, Chill
-    if part.PreparationSeconds > 0
-      li Prep Time: #{part.PreparationSeconds / 60} minutes
-    if part.PreparationMethod && part.PreparationMethod.length > 0
-      li part.PreparationMethod
-    if part.CookSeconds > 0
-      li Cook Time: #{part.CookSeconds / 60} minutes
-    if part.Temperature > 0
-      li Temperature: #{part.Temperature} &#xb0
-    if part.ChillSeconds > 0
-      li Chill Time: #{part.ChillSeconds / 60} minutes
-    if part.Name && part.Name != recipe.Name && part.Name != ''
-      h2(align='center')= part.Name
+  each part in recipe.Parts
+    div
+      // Prep Time, Method, Cook Time, Temperature, Chill
+      if part.PreparationSeconds > 0
+        li Prep Time: #{part.PreparationSeconds / 60} minutes
+      if part.PreparationMethod && part.PreparationMethod.length > 0
+        li part.PreparationMethod
+      if part.CookSeconds > 0
+        li Cook Time: #{part.CookSeconds / 60} minutes
+      if part.Temperature > 0
+        li Temperature: #{part.Temperature} &#xb0
+      if part.ChillSeconds > 0
+        li Chill Time: #{part.ChillSeconds / 60} minutes
+      if part.Name && part.Name != recipe.Name && part.Name != ''
+        h2(align='center')= part.Name
 
-  // ---------------- Ingredients ------------------------
-  if part.Ingredients
-    h3(align='center') Ingredients
-    each ingredient in part.Ingredients
-      if ingredient.Quantity != 0
-        span(class='Quantity') #{ingredient.Quantity}&nbsp;
-      if ingredient.Amount != '0'
-        span(class='Amount') #{ingredient.Amount}&nbsp;
-      if ingredient.AmountMax > '0'
-        span(class='Amount')  - #{part.AmountMax}&nbsp;
-      if ingredient.Unit != '' && ingredient.Unit != 'Unit' && ingredient.Unit != 'unit'
-        span(class='Unit') #{ingredient.Unit}&nbsp;
-      span(class='Ingredient') #{ingredient.Ingredient}&nbsp;
-      if (ingredient.Preparation)
-        span(class='Preparation') (#{ingredient.Preparation})
-      br
-  h3 Directions
-  //pre #{part.Instructions}
-  each line in part.InstructionLines
-    p #{line}
-
-//each part
-//    ul#users
-//      each user, name in users
-//        // expands to if (user.isA == 'ferret')
-//        if user.isA == 'ferret'
-//          li(class='user-' + name) #{name} is just a ferret
-//        else
-//          li(class='user-' + name) #{name} #{user.email}
+    // ---------------- Ingredients ------------------------
+    if part.Ingredients
+      h3(align='center') Ingredients
+      each ingredient in part.Ingredients
+        span(itemprop='ingredients')
+          if ingredient.Quantity != 0
+            span(class='Quantity') #{ingredient.Quantity}&nbsp;
+          if ingredient.Amount != '0'
+            span(class='Amount') #{ingredient.Amount}&nbsp;
+          if ingredient.AmountMax > '0'
+            span(class='Amount')  - #{part.AmountMax}&nbsp;
+          if ingredient.Unit != '' && ingredient.Unit != 'Unit' && ingredient.Unit != 'unit'
+            span(class='Unit') #{ingredient.Unit}&nbsp;
+          span(class='Ingredient') #{ingredient.Ingredient}&nbsp;
+          if (ingredient.Preparation)
+            span(class='Preparation') (#{ingredient.Preparation})
+        br
+    h3 Directions
+    //pre #{part.Instructions}
+    div(itemprop='recipeInstructions')
+      each line in part.InstructionLines
+        p #{line}
