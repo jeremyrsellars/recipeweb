@@ -5,7 +5,10 @@ h1(alt=path) Hungry Adelaide Recipes
 form
   p
     input(name='p', value=p)
-    input(type='submit') Search
+    input(type='submit',value='Search')
+    &nbsp;
+    b Ex: 
+    a(href='/recipes/?p=chocolate+tag:dessert+ingredient:buttermilk') chocolate tag:dessert ingredient:buttermilk
 
 each recipe in recipes
   div
