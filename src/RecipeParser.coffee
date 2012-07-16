@@ -80,10 +80,8 @@ class module.exports.RecipeParser
     @setAttributes tag, attrs
     if @tagIsMethod
       part = recipe.Parts[recipe.Parts.length - 1]
-      console.log 'part PreparationMethod: ' + tag
       part.PreparationMethod = tag
     else
-      console.log 'tag: ' + tag
       recipe.Tags = [] unless recipe.Tags
       recipe.Tags.push tag
 

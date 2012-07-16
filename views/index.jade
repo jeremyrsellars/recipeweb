@@ -21,4 +21,4 @@ each recipe in recipes
       br
       &nbsp;&nbsp;&nbsp;&nbsp;
       each tag in recipe.Tags
-        a(class='tag',href='/recipes/?p=tag:#{tag.Name}')=tag.Name
+        a(class='tag',href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
