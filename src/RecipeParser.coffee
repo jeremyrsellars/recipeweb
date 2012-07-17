@@ -14,23 +14,23 @@ class module.exports.RecipeParser
         fn null, recipe
       cb.onStartElementNS (elem, attrs, prefix, uri, namespaces) =>
         if elem != 'String'
-            lastElem = elem
+          lastElem = elem
         if elem == "Recipe"
-            @processRecipe recipe, attrs
+          @processRecipe recipe, attrs
         else if elem == "RecipePart"
-            @processRecipePart recipe, attrs
+          @processRecipePart recipe, attrs
         else if elem == "PreparationMethod"
-            @processMethod recipe, attrs
+          @processMethod recipe, attrs
         else if elem == "Rating"
-            @processRating recipe, attrs
+          @processRating recipe, attrs
         else if elem == "Source"
-            @processSource recipe, attrs
+          @processSource recipe, attrs
         else if elem == "Tags"
-            @processTags recipe, attrs
+          @processTags recipe, attrs
         else if elem == "Tag"
-            @processTag recipe, attrs
+          @processTag recipe, attrs
         else if elem == "IngredientDetail"
-            @processIngredientDetail recipe, attrs
+          @processIngredientDetail recipe, attrs
 
       cb.onCdata (cdata) =>
         if lastElem == 'Instructions'
