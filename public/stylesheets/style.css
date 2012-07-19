@@ -10,7 +10,7 @@ span {
   color: #80A0D0;
 }
 
-ul {display: inline;}
+ul {display: inline-block;}
 
 
 body
@@ -20,6 +20,7 @@ body
 
 html, body {
   height: 100%;
+  width: 600px;
 }
 
 img.background
@@ -75,6 +76,10 @@ span.Quantity, span.Amount, span.Unit
 {
   margin: 10px
 }
+.wrapper .content div div
+{
+  margin: 2px
+}
 .wrapper .content h1
 {
   margin: 10px
@@ -98,7 +103,11 @@ span.Quantity, span.Amount, span.Unit
   margin:0px
 }
 
-a.tag
+span.tag
+{
+  display: inline-block;
+}
+span.tag a
 {
   color: #3E6D8E;
   background-color: #E0EAF1;
@@ -110,4 +119,46 @@ a.tag
   font-size: 90%;
   line-height: 2.4;
   white-space: nowrap;
+}
+
+li.ingredient
+{
+  display: inline;
+  list-style-type:circle;
+  font-size:8pt;
+}
+
+p.instructions
+{
+  margin: 0px;
+  font-size:8pt;
+  text-indent: 20px
+}
+
+div.recipe
+{
+  border-top: 1px dotted #3E6D8E;
+  width='600px';
+}
+div.inline
+{
+  border-bottom: 1px dotted #3E6D8E;
+}
+div.sxs
+{
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+
+div.recipe_header span
+{
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.right
+{
+  display: inline-block;
+  text-align: right;
 }

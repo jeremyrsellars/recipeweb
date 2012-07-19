@@ -6,22 +6,27 @@ form
   p
     input(name='p', value=p)
     input(type='submit',value='Search')
-    &nbsp;
+    br
     b Ex: 
     a(href='/recipes/?p=chocolate+tag:dessert+ingredient:buttermilk') chocolate tag:dessert ingredient:buttermilk
 
 each recipe in recipes
-  div
-    a(href=recipe.FileName) #{recipe.Name}
-    if recipe.Source
-      &nbsp;-
-      span #{recipe.Source.Name}
-    each part in recipe.Parts
-      if part.PreparationMethod
-        &nbsp;-
-        span #{part.PreparationMethod.Name}
-    if recipe.Tags
-      br
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      each tag in recipe.Tags
-        a(class='tag',href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
+  div(class='recipe')
+    div(class='recipe_header')
+      a(href=recipe.FileName) #{recipe.Name}
+      if recipe.Source
+        span(class='right') &nbsp;- #{recipe.Source.Name}
+      each part in recipe.Parts
+        if part.PreparationMethod
+          span(class='right') &nbsp;- #{part.PreparationMethod.Name}
+    div
+      div(class='sxs')
+        if recipe.Tags
+          each tag in recipe.Tags
+            span(class='tag')
+              a(href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
+      div(class='sxs')
+        each part in recipe.Parts
+          if part.Ingredients
+            each ingredient in part.Ingredients
+              li(class='ingredient') #{ingredient.Ingredient}, 
