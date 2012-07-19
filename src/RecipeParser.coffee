@@ -62,7 +62,7 @@ class module.exports.RecipeParser
     rating = {}
     @setAttributes rating, attrs
     recipe.Ratings = [] unless recipe.Ratings
-    recipe.Ratings.push rating
+    recipe.Ratings.push rating if rating.Value > 0
 
   processSource: (recipe, attrs)=>
     source = {}
