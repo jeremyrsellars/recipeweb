@@ -4,7 +4,7 @@ RecipeIndexManager = require('./src/RecipeIndexManager').RecipeIndexManager
 
 Idx = require 'simpleindex'
 
-app = module.exports = express.createServer()
+app = module.exports = express()
 
 app.configure ->
   app.set 'views', __dirname + '/views'
@@ -16,14 +16,15 @@ app.configure ->
 
 app.configure 'development', ->
   app.use express.errorHandler { dumpExceptions: true, showStack: true }
-  app.set 'recipeRoot', './recipes/'
+  app.set 'recipeRoot', process.env['recipes'] ? './recipes/'
 
 app.configure 'production', ->
   app.use express.errorHandler()
-  app.set 'recipeRoot', '/documents and settings/compaq_administrator/my documents/my recipes/'
+  app.set 'recipeRoot', process.env['recipes'] ? '/documents and settings/compaq_administrator/my documents/my recipes/'
 
 app.configure ->
   new RecipeIndexManager(app.settings.recipeRoot).load (err, index)->
+    console.log err if err
     console.log index.count() + ' recipes'
     app.set 'index', index
     app.set 'indexSearcher', new Idx.IndexSearcher index
@@ -34,7 +35,3 @@ app.get '/about', routes.about
 app.get '/legal', routes.legal
 app.get '/recipes/', routes.index
 app.get '/recipes/:recipe', require('./routes/viewRecipe.js').viewRecipe
-
-
-app.listen 80
-console.log "Express server listening on port %d in %s mode for %s", app.address().port, app.settings.env, app.settings.recipeRoot

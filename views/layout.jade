@@ -5,7 +5,8 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     div(class='wrapper')
-      div(class='content')!= body
+      div(class='content')
+        block content
       div(class='push')
 
     div(class='footer', align='center')

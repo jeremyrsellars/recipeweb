@@ -17,7 +17,7 @@ converter =
   source: (r) -> (r.Source ? {}).Name ? []
   tag: (r) -> 
     tags = 
-      tag.Name.replace(/\W/g, '_') for tag in r.Tags
+      tag.Name.replace(/\W/g, '_') for tag in r.Tags ? []
     new Idx.LowerCaseFilter().filter tags
   method: (r) -> [part.PreparationMethod for part in r.Parts ? []].join '\r\n'
   instructions: (r) -> [line for line in part.InstructionLines ? [] for part in r.Parts ? []].join '\r\n'
@@ -26,6 +26,8 @@ converter =
 
 class module.exports.RecipeIndexManager
   constructor: (@recipeFolder) ->
+    if @recipeFolder and @recipeFolder.length > 0 && @recipeFolder[@recipeFolder.length - 1] != '\\'
+      @recipeFolder += '\\'
     @index = new Idx.Index()
     @backlog = 0
     @loaded = 0
@@ -34,7 +36,7 @@ class module.exports.RecipeIndexManager
     @docInv.filter = new Idx.StopWordFilter Idx.StopWordFilter.MySqlStopWords, @docInv.filter
 
   load: (@cb)=>
-    console.log 'loading files from ' + @recipeFolder
+    console.log 'loading recipes from ' + @recipeFolder
     fs.readdir @recipeFolder, (err, files) =>
       return @loadFiles files, cb unless err?
       cb err
@@ -48,6 +50,7 @@ class module.exports.RecipeIndexManager
 
   loadFile: (file, cb) =>
     new RecipeParser(@recipeFolder + file).parse (err, recipe) =>
+      console.error err if err
       recipe.FileName = file
       @addRecipe recipe
       @fileLoaded file
