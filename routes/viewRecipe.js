@@ -4,7 +4,6 @@ exports.viewRecipe = function(req, res){
   new RecipeParser(req.app.settings.recipeRoot + req.params.recipe).parse (function(err, recipe){
       if (err)
         console.log(err);
-      console.log(recipe);
       writeRecipe(res, recipe);
   });
 };

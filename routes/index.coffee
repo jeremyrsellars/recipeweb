@@ -72,12 +72,13 @@ exports.index = (req, res) ->
     url.query = url.query.toLowerCase()
     console.log 'query: ' + url.query
     querystring = require('querystring').parse url.query
-    if querystring.p? && querystring.p
-      filterWords = querystring.p.split /[+ ]|%20/
+    if querystring.p?
       query = querystring.p
+      filterWords = query.split /[+ ]|%20/
       try
         hits = indexSearcher.searchAllIndexesSync new AllOfTheseSubstringQuery filterWords
       catch e
+        console.error e
       recipes = index.getItemsSync hits
   if !recipes
     recipes =
