@@ -26,8 +26,6 @@ converter =
 
 class module.exports.RecipeIndexManager
   constructor: (@recipeFolder) ->
-    if @recipeFolder and @recipeFolder.length > 0 && @recipeFolder[@recipeFolder.length - 1] != '\\'
-      @recipeFolder += '\\'
     @index = new Idx.Index()
     @backlog = 0
     @loaded = 0

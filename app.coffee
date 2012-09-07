@@ -16,11 +16,17 @@ app.configure ->
 
 app.configure 'development', ->
   app.use express.errorHandler { dumpExceptions: true, showStack: true }
-  app.set 'recipeRoot', process.env['recipes'] ? './recipes/'
+  recipeFolder = process.env['recipes'] ? './recipes/'
+  if recipeFolder and recipeFolder.length > 0 && recipeFolder[recipeFolder.length - 1] != '\\'
+    recipeFolder += '\\'
+  app.set 'recipeRoot', recipeFolder
 
 app.configure 'production', ->
   app.use express.errorHandler()
-  app.set 'recipeRoot', process.env['recipes'] ? '/documents and settings/compaq_administrator/my documents/my recipes/'
+  recipeFolder = process.env['recipes'] ? '/documents and settings/compaq_administrator/my documents/my recipes/'
+  if recipeFolder and recipeFolder.length > 0 && recipeFolder[recipeFolder.length - 1] != '\\'
+    recipeFolder += '\\'
+  app.set 'recipeRoot', recipeFolder
 
 app.configure ->
   new RecipeIndexManager(app.settings.recipeRoot).load (err, index)->
