@@ -12,7 +12,7 @@ app.configure ->
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
-  app.use express.static __dirname + '/public' 
+  app.use '/recipes/', express.static __dirname + '/public' 
 
 app.configure 'development', ->
   app.use express.errorHandler { dumpExceptions: true, showStack: true }
@@ -37,7 +37,7 @@ app.configure ->
 
 # Routes
 app.get '/', (req, res) -> res.redirect '/recipes/'
-app.get '/about', routes.about
-app.get '/legal', routes.legal
+app.get '/recipes/about', routes.about
+app.get '/recipes/legal', routes.legal
 app.get '/recipes/', routes.index
 app.get '/recipes/:recipe', require('./routes/viewRecipe.js').viewRecipe
