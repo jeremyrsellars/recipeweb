@@ -57,6 +57,7 @@ block content
           br
       h3 Directions
       //pre #{part.Instructions}
-      div(itemprop='recipeInstructions')
-        each line in part.InstructionLines
-          p #{line}
+      if part.InstructionLines
+        div(itemprop='recipeInstructions')
+          each line in part.InstructionLines
+            p #{line}
