@@ -1,10 +1,17 @@
 express = require 'express'
 routes = require './routes'
+path = require 'path'
 RecipeIndexManager = require('./src/RecipeIndexManager').RecipeIndexManager
 
 Idx = require 'simpleindex'
 
 app = module.exports = express()
+
+normalizeDirectory = (d) ->
+  if d and d.length > 0 && d[d.length - 1] != path.sep
+    d + path.sep
+  else
+    d
 
 app.configure ->
   app.set 'views', __dirname + '/views'
@@ -17,16 +24,12 @@ app.configure ->
 app.configure 'development', ->
   app.use express.errorHandler { dumpExceptions: true, showStack: true }
   recipeFolder = process.env['recipes'] ? './recipes/'
-  if recipeFolder and recipeFolder.length > 0 && recipeFolder[recipeFolder.length - 1] != '\\'
-    recipeFolder += '\\'
-  app.set 'recipeRoot', recipeFolder
+  app.set 'recipeRoot', normalizeDirectory recipeFolder
 
 app.configure 'production', ->
   app.use express.errorHandler()
-  recipeFolder = process.env['recipes'] ? '/documents and settings/compaq_administrator/my documents/my recipes/'
-  if recipeFolder and recipeFolder.length > 0 && recipeFolder[recipeFolder.length - 1] != '\\'
-    recipeFolder += '\\'
-  app.set 'recipeRoot', recipeFolder
+  recipeFolder = process.env['recipes'] ? './recipes/'
+  app.set 'recipeRoot', normalizeDirectory recipeFolder
 
 app.configure ->
   new RecipeIndexManager(app.settings.recipeRoot).load (err, index)->
