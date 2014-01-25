@@ -40,11 +40,19 @@ class module.exports.RecipeIndexManager
       cb err
 
   loadFiles: (@files, cb) =>
-    recipes = []
-    for f in files
-      continue unless f.endsWith '.recipe'
+    @partitionedForEach @files, 10, (f) =>
+      return unless f.endsWith '.recipe'
       @backlog++
       @loadFile f
+
+  partitionedForEach: (lst, partitionSize, fn) =>
+     if lst == [] or lst == null
+       return
+     firstN = lst[0..partitionSize - 1]
+     rest = lst[partitionSize..]
+     for item in firstN
+        fn item
+     setImmediate () => @partitionedForEach rest, partitionSize, fn
 
   loadFile: (file, cb) =>
     new RecipeParser(@recipeFolder + file).parse (err, recipe) =>
