@@ -4,7 +4,7 @@ class module.exports.RecipeParser
   constructor: (@filename) ->
 
   parse: (fn) =>
-    recipe = {}
+    recipe = filename: @filename
     lastElem = ''
     parser = new xml.SaxParser (cb) =>
       cb.onStartDocument () =>
