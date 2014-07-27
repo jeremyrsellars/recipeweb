@@ -1,45 +1,49 @@
 extends layout
 
 block content
-  img(class='background', src='/recipes/images/flower_watermark.jpg')
+  div#main
+    div.container
 
-  h1(alt=path) Hungry Adelaide Recipes
+      header
+        h1(alt=path) Hungry Adelaide Recipes
 
-  form
-    p
-      input(name='p', value=p)
-      input(type='submit',value='Search')
-      br
-      b Ex: 
-      a(href='/recipes/?p=chocolate+tag:dessert+ingredient:buttermilk') chocolate tag:dessert ingredient:buttermilk
+      form
+        p
+          input(name='p', value=p)
+          input(type='submit',value='Search')
+          br
+          b Ex: 
+          a(href='/recipes/?p=chocolate+tag:dessert+ingredient:buttermilk') chocolate tag:dessert ingredient:buttermilk
 
-  each recipe in recipes
-    div(class='recipe')
-      div(class='recipe_header')
-        a(href=recipe.FileName) #{recipe.Name}
-        if recipe.Source
-          span(class='right') &nbsp;- #{recipe.Source.Name}
-        if recipe.Parts
-          each part in recipe.Parts
-            if part.PreparationMethod
-              span(class='right') &nbsp;- #{part.PreparationMethod.Name}
-      div
-        div(class='sxs')
-          if recipe.Tags
-            each tag in recipe.Tags
-              span(class='tag')
-                a(href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
-          if recipe.Ratings && recipe.Ratings.length
-            p(class='rating')
-              - var r = recipe.Ratings[recipe.Ratings.length - 1];
-              - var stars = Math.floor(r.Value);
-              span(class='rating') #{Array(stars + 1).join("*")}
-              span(class='ratingr') #{Array(5-stars + 1).join("*")}
-              | #{" - " + r.UserName}
+      each recipe in recipes
+        hr
+        div(class='recipe')
+          div(class='recipe_header')
+            a(href=recipe.FileName)
+              h2 #{recipe.Name}
+            if recipe.Source
+              span(class='right') &nbsp;- #{recipe.Source.Name}
+            if recipe.Parts
+              each part in recipe.Parts
+                if part.PreparationMethod
+                  span(class='right') &nbsp;- #{part.PreparationMethod.Name}
+          div
+            if recipe.Tags
+              each tag in recipe.Tags
+                span(class='tag')
+                  a(href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
+                  | &nbsp;
+            if recipe.Ratings && recipe.Ratings.length
+              p(class='rating')
+                - var r = recipe.Ratings[recipe.Ratings.length - 1];
+                - var stars = Math.floor(r.Value);
+                span(class='rating') #{Array(stars + 1).join("*")}
+                span(class='ratingr') #{Array(5-stars + 1).join("*")}
+                | #{" - " + r.UserName}
 
-        div(class='sxs')
-          if recipe.Parts
-            each part in recipe.Parts
-              if part.Ingredients
-                each ingredient in part.Ingredients
-                  li(class='ingredient') #{ingredient.Ingredient}, 
+            if recipe.Parts
+              each part in recipe.Parts
+                if part.Ingredients
+                  ul
+                    each ingredient in part.Ingredients
+                      li(class='ingredient')  #{ingredient.Ingredient}

@@ -2,17 +2,100 @@
 html
   head
     title= title
-    link(rel='stylesheet', href='/recipes/stylesheets/style.css')
-  body
-    div(class='wrapper')
-      div(class='content')
-        block content
-      div(class='push')
+    meta(http-equiv="content-type", content="text/html; charset=utf-8")
+    meta(name="description", content="")
+    meta(name="keywords", content="")
+    link(href='http://fonts.googleapis.com/css?family=Questrial', rel='stylesheet', type='text/css')
+    //[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+    script(src="js/skel.min.js")
+    script(src="js/skel-panels.min.js")
+    script(src="js/init.js")
+    link(rel="stylesheet", href="stylesheets/recipe.css")
+    noscript
+      link(rel="stylesheet", href="css/skel-noscript.css")
+      link(rel="stylesheet", href="css/style.css")
+      link(rel="stylesheet", href="css/style-desktop.css")
+    //[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]
+    //[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]
 
-    div(class='footer', align='center')
-      hr
-      a(href='/recipes/') Home
-      span &nbsp|&nbsp
-      a(href='/recipes/about') About
-      span &nbsp|&nbsp
-      a(href='/recipes/legal') Legal
+  body.homepage
+    div#header
+      div#logo-wrapper
+        div.container
+          div#logo
+            h1
+              a(href="/recipes/") Hungry Adelaide Recipes
+            span Meals for a rich life
+          
+      div.container
+        nav#nav
+          ul
+            li
+              a(href="/recipes/") Home
+            li.active
+              a(href="/recipes/?p=tag:soup") Soups and Stews
+            li
+              a(href="/recipes/?p=slow+cooker") Fall Weather
+            li
+              a(href="/recipes/?p=tag:dessert") Desserts
+            li
+              a(href="/recipes/?p=tag:beverage") Drinks
+
+    block content
+
+    div#footer
+      div.container
+        div.row
+          div.6u
+            section
+              header
+                h2 Meals for a rich life
+              
+                a(href="#", class="image full")
+                  img(src="images/pics05.jpg", alt="")
+              p In a rushed world, it's wonderful to spend quality time around quality food.  Make a meal and a memory.
+            
+          div#fbox1
+            section
+              header
+                h2 Family Favorites
+              
+              ul.default
+                li(class="fa fa-angle-right")
+                  a(href="#") Irish Chicken and Dumplins
+                li(class="fa fa-angle-right")
+                  a(href="#") Sour cream chicken
+                li(class="fa fa-angle-right")
+                  a(href="#") Gorganzola lamb &amp; rice
+                li(class="fa fa-angle-right")
+                  a(href="#") Smith &amp; Wessel
+                li(class="fa fa-angle-right")
+                  a(href="#") Duck Sorbet
+                li(class="fa fa-angle-right")
+                  a(href="#") Apple Cobbler
+            
+          div#fbox2
+            section
+              header
+                h2 New Recipes
+              
+              ul.default
+                li(class="fa fa-angle-right")
+                  a(href="#") Irish Chicken and Dumplins
+                li(class="fa fa-angle-right")
+                  a(href="#") Sour cream chicken
+                li(class="fa fa-angle-right")
+                  a(href="#") Gorganzola lamb &amp; rice
+                li(class="fa fa-angle-right")
+                  a(href="#") Smith &amp; Wessel
+                li(class="fa fa-angle-right")
+                  a(href="#") Duck Sorbet
+                li(class="fa fa-angle-right")
+                  a(href="#") Apple Cobbler
+            
+    div#copyright
+      div.container
+        section Design:
+          a(href="http://templated.co") TEMPLATED
+        
