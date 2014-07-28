@@ -1,0 +1,29 @@
+body
+{
+   font-family: Tahoma;
+}
+
+h1,h2,h3,h4
+{
+   font-family: Georgia;
+}
+
+.recipe .recipe_header a h2
+{
+  font-size:16pt; text-decoration: none;
+}
+
+.recipe div ul li
+{
+  display:inline;
+  padding-bottom:0px;
+}
+
+.recipe div ul li:after
+{
+  content:", ";
+}
+.recipe div ul li:last-child:after
+{
+  content:"";
+}
