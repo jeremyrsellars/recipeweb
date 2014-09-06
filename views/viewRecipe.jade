@@ -50,7 +50,7 @@ block content
                         if ingredient.Quantity != 0
                           span(class='Quantity') #{ingredient.Quantity}x&nbsp;
                         if ingredient.Amount && ingredient.Amount != '0'
-                          span(class='Amount') #{ingredient.Amount.replace(/ /g, '&nbsp;')}&nbsp;
+                          span(class='Amount') #{ingredient.Amount.replace(/ /g, ' ')}&nbsp;
                         if ingredient.AmountMax && ingredient.AmountMax > '0'
                           span(class='Amount')  - #{ingredient.AmountMax.replace(/ /g, '&nbsp;')}&nbsp;
                         if ingredient.Unit != '' && ingredient.Unit != 'Unit' && ingredient.Unit != 'unit'

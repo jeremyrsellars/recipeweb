@@ -31,7 +31,7 @@ block content
             if recipe.Tags
               each tag in recipe.Tags
                 span(class='tag')
-                  a(href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, '_')}')=tag.Name
+                  a(href='/recipes/?p=tag:#{tag.Name.toLowerCase().replace(/\W/g, "_")}')= tag.Name
                   | &nbsp;
             if recipe.Ratings && recipe.Ratings.length
               p(class='rating')
