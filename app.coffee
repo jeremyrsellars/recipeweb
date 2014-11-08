@@ -43,4 +43,4 @@ app.get '/', (req, res) -> res.redirect '/recipes/'
 app.get '/recipes/about', routes.about
 app.get '/recipes/legal', routes.legal
 app.get '/recipes/', routes.index
-app.get '/recipes/:recipe', require('./routes/viewRecipe.js').viewRecipe
+app.get '/recipes/:recipe', require('./routes/viewRecipe.js').recipe
