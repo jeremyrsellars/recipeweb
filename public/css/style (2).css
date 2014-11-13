@@ -1,0 +1,340 @@
+/*
+    red: #E73F3F
+    orange: #F76C27
+    yellow: #E7E737
+    blue: #6D9DD1
+    purple: #7E45D3
+*/
+
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: white;
+  background:linear-gradient(135deg, white, #eee);
+  background-attachment: fixed;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body h1,
+body h2,
+body h3{
+  text-align: center;
+  padding-top: 20px;
+}
+
+body #retrieved-on{
+  text-align: center;
+}
+body #retrieved-on.error{
+  color: red;
+}
+
+body h2 i.fa{
+	font-size: 2em;
+	color: #00A000;
+	width: 1.5em;
+}
+
+.banner {
+  position: fixed;
+  top: 0;
+  border: 0;
+  width: 100%;
+  background-color: #cccccc;
+  color: black;
+  text-align: center;
+}
+
+.banner h1{
+  margin: 0;
+  padding-top: 0;
+  text-align: center;
+}
+
+.banner h2{
+  margin: 0;
+  padding-top: 0;
+}
+
+.banner h1 i.fa{
+	font-size: 2em;
+	color: #00A000;
+	width: 1.6em;
+}
+
+.banner.warning{
+  color: #E73F3F;
+  background-color: #E7E737;
+}
+
+.banner.error{
+  color: white;
+  background-color: #E73F3F;
+}
+
+
+
+body div h1,
+body div h2,
+body div h3{
+  text-align: center;
+  padding-top: 20px;
+}
+
+body div h2 i.fa{
+	font-size: 2em;
+	color: #00A000;
+	width: 1.5em;
+}
+
+body div h2 i.error {
+  color:red
+}
+
+table.log{
+  overflow: scroll;
+  border-collapse: collapse;
+  max-height: 300px;
+  max-width: 40%;
+  padding:0px;
+  margin:0px;
+  width: 100%;
+}
+
+table.log tbody tr td{
+	padding: 3px;
+}
+
+table.log tbody tr:nth-child(odd) {
+    background-color: white;
+}
+table.log tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+
+div.card{
+	vertical-align: top;
+	margin:5px;
+	padding:10px;
+	color: black;
+	background-color: white;
+	border: solid #eee 2px;
+	border-left: solid #eee 15px;
+	width:45%;
+	max-height: 500px;
+	overflow: hidden;
+	display:inline-block;
+	border-radius: 10px;
+}
+
+div.card ul{
+	padding:0px;
+	list-style-type: none;
+}
+
+div.card li{
+	margin-bottom: 10px;
+	font-size: 1.2em;
+}
+
+div.card#service li i.fa{
+	font-size: 2em;
+	color: #00A000;
+	width: 1.5em;
+}
+
+div.card li a.more{
+	font-size: .9em;
+	padding-left: 10px;
+	text-decoration: none;
+	color: black;
+}
+
+div.card li a.more:hover{
+	text-decoration: underline;
+}
+
+div.card pre{
+	word-wrap: break-word;
+}
+
+div.card #started{
+	float: left;
+}
+
+div.card #completed{
+	float:right;
+}
+
+div.card #statechange{
+	float: left;
+}
+
+div.card #due{
+	float: left;
+}
+
+div.card #overdue{
+	float: right;
+}
+
+div.card h1{
+	text-align: center;
+	font-size: 1.8em;
+}
+
+div.card p{
+	text-align: center;
+}
+
+div.card #counts {
+	text-align: center;
+}
+
+div.card #counts li{
+	display: inline;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+div.card #counts li.none{
+	color:gray;
+}
+
+div.card #counts li .fa{
+	padding-right: 3px;
+}
+
+div.card #counts li:before{
+	padding: 2px;
+}
+
+div.card #documentdate .fa {
+	padding-right: 1em;
+}
+
+div.card #documentdate.started .fa {
+	color:#00A000;
+}
+
+div.card #documentdate.stopped .fa {
+	color:red;
+}
+
+div.card h2{
+	text-align: center;
+	font-size: 1.3em;
+}
+
+div.card.source1{
+	border-color: #6D9DD1;
+}
+/*div.card.source1 table.log tbody tr:nth-child(odd) {
+    background-color: #6290bc;
+}
+div.card.source1 table.log tbody tr:nth-child(even) {
+    background-color: #5780a7;
+}
+*/
+div.card.source2{
+	border-color: #7E45D3;
+}
+/*div.card.source2 table.log tbody tr:nth-child(odd) {
+    background-color: #713ebd;
+}
+div.card.source2 table.log tbody tr:nth-child(even) {
+    background-color: #6437a8;
+}
+*/
+div.card.source3{
+	border-color: #F76C27;
+}
+/*div.card.source3 table.log tbody tr:nth-child(odd) {
+    background-color: #de6123;
+}
+div.card.source3 table.log tbody tr:nth-child(even) {
+    background-color: #c5561f;
+}
+*/
+div.card.source4{
+	border-color: #E73F3F;
+}
+/*div.card.source4 table.log tbody tr:nth-child(odd) {
+    background-color: #cf3838;
+}
+div.card.source4 table.log tbody tr:nth-child(even) {
+    background-color: #b83232;
+}
+*/
+div.card.source5{
+	border-color: #E7E737;
+	color: black;
+}
+/*div.card.source5 table.log tbody tr:nth-child(odd) {
+    background-color: #cfcf31;
+}
+div.card.source5 table.log tbody tr:nth-child(even) {
+    background-color: #b8b82c;
+}
+*/
+div.card#log{
+	border-color: #333;
+	max-width: 100%;
+	width:90%;
+}
+div.card#service{
+	border-color: #333;
+	max-width: 100%;
+}
+
+div.card table{
+	background-color: white;
+}
+
+div.card table{
+	max-width: 100%;
+}
+
+div.card table thead tr td{
+	border-bottom: solid gray 1px;
+	padding: 3px;
+}
+
+div.queueItemContainer{
+	background-color: transparent;
+	height:30px;
+	width:80%;
+	padding-left:10%;
+	padding-right:10%;
+}
+div.queueItemContainer #summary{
+	margin:0px;
+	padding:0px;
+	margin-top:10px;
+}
+
+div.queueItemContainer div{
+	display: inline-block;
+	height: 15px;
+}
+div.queueItemContainer div{
+	display: inline-block;
+	height: 15px;
+	/*border: 1px solid #000;*/
+	border-radius: 3px;
+	background-color: gray;
+}
+div.queueItemContainer#pending div.y{
+	background-color: #6D9DD1;
+}
+div.queueItemContainer#depth div.y{
+	background-color: #E73F3F;
+}
+

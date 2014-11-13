@@ -1,4 +1,4 @@
-var RecipeParser = require('../src/RecipeParser').RecipeParser;
+var RecipeParser = require('../RecipeParser').RecipeParser;
 exports.viewRecipe = function(req, res){
   console.log('===========' + req.params.recipe + '==========');
   new RecipeParser(req.app.settings.recipeRoot + req.params.recipe).parse (function(err, recipe){

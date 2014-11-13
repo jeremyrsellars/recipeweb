@@ -1,7 +1,7 @@
 express = require 'express'
 routes = require './routes'
 path = require 'path'
-RecipeIndexManager = require('./src/RecipeIndexManager').RecipeIndexManager
+RecipeIndexManager = require('./RecipeIndexManager').RecipeIndexManager
 
 Idx = require 'simpleindex'
 
@@ -42,5 +42,6 @@ app.configure ->
 app.get '/', (req, res) -> res.redirect '/recipes/'
 app.get '/recipes/about', routes.about
 app.get '/recipes/legal', routes.legal
+app.get '/recipes/new', require './routes/newRecipe.coffee'
 app.get '/recipes/', routes.index
 app.get '/recipes/:recipe', require('./routes/viewRecipe.js').viewRecipe

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  meta(name='viewport', content='width=device-width, height=600, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.10')
+
+
+  div#main(itemscope='',itemtype="http://schema.org/Recipe")
+
+      div#app
+        div.banner
+          h2 Loading...
+        script(src="http://fb.me/react-0.11.1.js")
+        script(src="../out/dev/goog/base.js", type="text/javascript")
+        script(src="../recipe-dev.js", type="text/javascript")
+        script(type="text/javascript")
+          goog.require("recipe.core");

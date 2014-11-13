@@ -4,3 +4,15 @@ npm-*.log
 /backup
 /recipes
 /recipes_dev
+pom.xml
+*jar
+/lib/
+/classes/
+/out/
+/target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+.nrepl-port
+recipe*.js*
+recipe*.js.map
